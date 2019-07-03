@@ -1,0 +1,18 @@
+{
+  "info": {
+    "name": "少数派作者名片",
+    "url": "https://github.com/spencerwooo/jsbox-sspai-namecard",
+    "version": "1.0.0",
+    "author": "SpencerWoo",
+    "website": "https://github.com/spencerwooo/jsbox-sspai-namecard",
+    "types": 0
+  },
+  "settings": {
+    "minSDKVer": "1.0.0",
+    "minOSVer": "10.0.0",
+    "idleTimerDisabled": false,
+    "autoKeyboardEnabled": false,
+    "keyboardToolbarEnabled": false,
+    "rotateDisabled": false
+  }
+}
