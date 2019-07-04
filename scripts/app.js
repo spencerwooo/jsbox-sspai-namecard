@@ -4,6 +4,14 @@
 
 var defaultAssetPath = 'https://cdn.sspai.com/'
 
+function getRegisteredDays(creationDay) {
+  // 返回的注册日期是 unix timestamp，例子：1515163617，单位是秒
+  let registerDay = new Date(creationDay * 1000)
+  let today = new Date()
+  let diff = Math.abs((today - registerDay) / 1000 / 60 / 60 / 24)
+  return Math.floor(diff)
+}
+
 function renderUI(userInfo) {
   $ui.render({
     props: {
@@ -14,7 +22,7 @@ function renderUI(userInfo) {
         type: 'view',
         props: {
           id: 'app',
-          bgcolor: $color('#ffffff'),
+          bgcolor: $color('#F9F9F9'),
           radius: 10
         },
         layout: function(make, view) {
@@ -30,9 +38,20 @@ function renderUI(userInfo) {
           radius: 32
         },
         layout: function(make, view) {
-          make.top.inset(14)
-          make.right.inset(15)
+          make.top.inset(16)
+          make.right.inset(30)
           make.size.equalTo($size(64, 64))
+        }
+      },
+      {
+        type: 'image',
+        props: {
+          src: 'assets/icon.png'
+        },
+        layout: function(make, view) {
+          make.top.inset(18)
+          make.left.inset(30)
+          make.size.equalTo($size(25, 25))
         }
       },
       {
@@ -40,12 +59,12 @@ function renderUI(userInfo) {
         props: {
           id: 'nickname',
           text: userInfo.nickname,
-          font: $font('Menlo-Bold', 22),
+          font: $font('Menlo-Bold', 21),
           align: $align.left
         },
         layout: function(make, view) {
-          make.top.inset(15)
-          make.left.inset(20)
+          make.top.inset(18)
+          make.left.inset(65)
         }
       },
       {
@@ -65,7 +84,7 @@ function renderUI(userInfo) {
           align: $align.left
         },
         layout: function(make, view) {
-          make.left.inset(20)
+          make.left.inset(30)
           make.top.equalTo($('nickname').bottom).offset(10)
         }
       },
@@ -78,9 +97,9 @@ function renderUI(userInfo) {
           align: $align.left
         },
         layout: function(make, view) {
-          make.left.inset(20)
+          make.left.inset(30)
           make.top.equalTo($('follower-stats').bottom).offset(5)
-          make.width.equalTo(300)
+          make.width.equalTo(280)
         }
       },
       {
@@ -106,7 +125,7 @@ function renderUI(userInfo) {
               color: $color('#ffffff')
             },
             layout: function(make, view) {
-              make.top.equalTo(view.super).inset(30)
+              make.top.equalTo(view.super).inset(25)
               make.left.inset(20)
             }
           },
@@ -204,7 +223,9 @@ function renderUI(userInfo) {
             type: 'label',
             props: {
               text:
-                '成为少数派 ' + userInfo.liked_count.toLocaleString() + ' 天',
+                '成为少数派 ' +
+                getRegisteredDays(userInfo.created_at).toLocaleString() +
+                ' 天',
               font: $font(12),
               color: $color('#ffffff')
             },
