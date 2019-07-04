@@ -11,8 +11,10 @@ function main() {
 
     // 将 ID 传递给获取用户信息接口
     requests.getUserInfo(userId).then(resp => {
-      userInfo = resp
-      $console.info(userInfo)
+      userInfo = resp.data
+      // $console.info(userInfo)
+
+      app.renderUI(userInfo)
     })
   })
 }
