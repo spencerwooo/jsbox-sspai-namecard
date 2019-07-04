@@ -13,6 +13,7 @@ async function getUserId(sspaiSearchName) {
   let resp = await $http.get({
     url: sspaiSearchApi + sspaiSearchName
   })
+  $console.info(resp);
   return resp.data
 }
 
@@ -20,6 +21,7 @@ async function getUserInfo(sspaiUserId) {
   let resp = await $http.get({
     url: sspaiApiUrl + sspaiUserId
   })
+  $console.info(resp.data);
   return resp.data
 }
 
