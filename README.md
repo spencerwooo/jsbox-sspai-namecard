@@ -1,4 +1,6 @@
-<img src="assets/sspai.png" alt="sspai" width="256px" align="center"/>
+<div align="center">
+<img src="assets/sspai.png" alt="sspai" width="256px"/>
+</div>
 
 # 少数派名片 for JSBox
 
