@@ -38,8 +38,8 @@ function renderUI(userInfo) {
           radius: 32
         },
         layout: function(make, view) {
-          make.top.inset(16)
-          make.right.inset(30)
+          make.top.inset(18)
+          make.right.inset(16)
           make.size.equalTo($size(64, 64))
         }
       },
@@ -50,7 +50,7 @@ function renderUI(userInfo) {
         },
         layout: function(make, view) {
           make.top.inset(18)
-          make.left.inset(30)
+          make.left.inset(25)
           make.size.equalTo($size(25, 25))
         }
       },
@@ -64,7 +64,7 @@ function renderUI(userInfo) {
         },
         layout: function(make, view) {
           make.top.inset(18)
-          make.left.inset(65)
+          make.left.inset(60)
         }
       },
       {
@@ -84,7 +84,7 @@ function renderUI(userInfo) {
           align: $align.left
         },
         layout: function(make, view) {
-          make.left.inset(30)
+          make.left.inset(25)
           make.top.equalTo($('nickname').bottom).offset(10)
         }
       },
@@ -97,7 +97,7 @@ function renderUI(userInfo) {
           align: $align.left
         },
         layout: function(make, view) {
-          make.left.inset(30)
+          make.left.inset(25)
           make.top.equalTo($('follower-stats').bottom).offset(5)
           make.width.equalTo(280)
         }
