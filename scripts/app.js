@@ -1,7 +1,7 @@
-function sayHello() {
-  $ui.alert($l10n('HELLO_WORLD'));
+function hello() {
+  return 'Hello'
 }
 
 module.exports = {
-  sayHello: sayHello
+  hello: hello
 }
