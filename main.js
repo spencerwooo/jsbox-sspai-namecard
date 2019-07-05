@@ -2,7 +2,7 @@ var app = require('scripts/app')
 var requests = require('scripts/requests')
 
 // var sspaiUserName = 'SpencerWoo'
-var userId = '666443'
+var userId = '800610'
 
 function main() {
   // 通过搜索接口获取少数派用户 ID，目前访问速度非常慢，以后再说

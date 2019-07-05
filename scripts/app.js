@@ -13,6 +13,12 @@ function getRegisteredDays(creationDay) {
 }
 
 function renderUI(userInfo) {
+  // Avatar animation cycles
+  let cycles = 1
+  // Icon tapped boolean
+  let iconTapped = 0
+
+  // Render UI elements
   $ui.render({
     props: {
       title: '少数派作者名片'
@@ -28,6 +34,19 @@ function renderUI(userInfo) {
         layout: function(make, view) {
           make.top.equalTo(view.super).inset(5)
           make.left.right.bottom.equalTo(view.super).inset(10)
+        }
+      },
+      {
+        type: 'image',
+        props: {
+          id: 'background',
+          src: 'assets/bg.png',
+          alpha: 0.1,
+          radius: 10
+        },
+        layout: function(make, view) {
+          make.top.right.equalTo($('app'))
+          make.size.equalTo($size(300, 91.5))
         }
       },
       {
@@ -49,6 +68,17 @@ function renderUI(userInfo) {
             events: {
               tapped: function() {
                 $device.taptic(1)
+                $ui.animate({
+                  duration: 0.4,
+                  delay: 0,
+                  damping: 1,
+                  velocity: 0,
+                  options: 0,
+                  animation: function() {
+                    $('avatar').rotate(Math.PI * cycles)
+                    cycles = cycles + 1
+                  }
+                })
               }
             }
           }
@@ -62,6 +92,7 @@ function renderUI(userInfo) {
       {
         type: 'image',
         props: {
+          id: 'sspai-icon',
           src: 'assets/icon.png'
         },
         layout: function(make, view) {
@@ -72,6 +103,24 @@ function renderUI(userInfo) {
         events: {
           tapped: function() {
             $device.taptic(1)
+
+            if (iconTapped === 0) {
+              $ui.animate({
+                duration: 0.4,
+                animation: function() {
+                  $('background').alpha = 0.9
+                }
+              })
+              iconTapped = 1
+            } else {
+              $ui.animate({
+                duration: 0.4,
+                animation: function() {
+                  $('background').alpha = 0.1
+                }
+              })
+              iconTapped = 0
+            }
           }
         }
       },
@@ -86,11 +135,6 @@ function renderUI(userInfo) {
         layout: function(make, view) {
           make.top.equalTo(view.super).inset(18)
           make.left.equalTo(view.super).inset(60)
-        },
-        eventss: {
-          tapped: function() {
-            $device.taptic(1)
-          }
         }
       },
       {
@@ -272,12 +316,30 @@ function renderUI(userInfo) {
 
   // 拥有勋章：
   // 1. 签约作者、专业作者、少数派成员等等
+  // 最右侧 badge 距离头像 12 初始距离
   let insetMargin = 12
+
   if (userInfo.user_flags.length > 0) {
+    let flagLabelMargin = insetMargin + userInfo.user_flags.length * 30
+    // 显示勋章信息的 label
+    $('app').add({
+      type: 'label',
+      props: {
+        id: 'flags-label',
+        text: 'label',
+        alpha: 0,
+        font: $font(14),
+        color: $color('#777777')
+      },
+      layout: function(make, view) {
+        make.top.equalTo(view.super).inset(16)
+        make.left.equalTo($('nickname').right).offset(flagLabelMargin)
+      }
+    })
+
     // 勋章点击与否
     let tapped = 0
 
-    // 最右侧 badge 具体头像 25 初始距离
     userInfo.user_flags.forEach(flag => {
       // 在头像 avatar 左侧每隔 30 距离添加一个 badge
       $('app').add({
@@ -303,8 +365,8 @@ function renderUI(userInfo) {
               options: 0,
               animation: function() {
                 if (tapped === 0) {
-                  $('flags-label').alpha = 1
                   $('flags-label').text = flag.name
+                  $('flags-label').alpha = 1
                   tapped = 1
                 } else {
                   $('flags-label').alpha = 0
@@ -318,22 +380,6 @@ function renderUI(userInfo) {
 
       // 增加 30 的距离
       insetMargin = insetMargin + 30
-    })
-
-    // 显示勋章信息的 label
-    $('app').add({
-      type: 'label',
-      props: {
-        id: 'flags-label',
-        text: 'label',
-        alpha: 0,
-        font: $font(14),
-        color: $color('#777777')
-      },
-      layout: function(make, view) {
-        make.top.equalTo(view.super).inset(16)
-        make.left.equalTo($('nickname').right).offset(insetMargin)
-      }
     })
   }
 
