@@ -45,6 +45,11 @@ function renderUI(userInfo) {
             },
             layout: function(make) {
               make.size.equalTo($size(64, 64))
+            },
+            events: {
+              tapped: function() {
+                $device.taptic(1)
+              }
             }
           }
         ],
@@ -63,6 +68,11 @@ function renderUI(userInfo) {
           make.top.inset(18)
           make.left.inset(25)
           make.size.equalTo($size(25, 25))
+        },
+        events: {
+          tapped: function() {
+            $device.taptic(1)
+          }
         }
       },
       {
@@ -76,6 +86,11 @@ function renderUI(userInfo) {
         layout: function(make, view) {
           make.top.equalTo(view.super).inset(18)
           make.left.equalTo(view.super).inset(60)
+        },
+        eventss: {
+          tapped: function() {
+            $device.taptic(1)
+          }
         }
       },
       {
@@ -103,7 +118,7 @@ function renderUI(userInfo) {
         type: 'label',
         props: {
           id: 'bio',
-          text: userInfo.bio,
+          text: userInfo.bio.split('\n').join(' '),
           font: $font(12),
           align: $align.left
         },
@@ -247,7 +262,7 @@ function renderUI(userInfo) {
           }
         ],
         layout: function(make, view) {
-          make.top.equalTo($('bio').bottom).offset(15)
+          make.top.equalTo($('avatar-container').bottom).offset(15)
           make.left.right.inset(10)
           make.bottom.equalTo(view.super).inset(10)
         }
@@ -257,10 +272,12 @@ function renderUI(userInfo) {
 
   // 拥有勋章：
   // 1. 签约作者、专业作者、少数派成员等等
+  let insetMargin = 12
   if (userInfo.user_flags.length > 0) {
-    // 最右侧 badge 具体头像 25 初始距离
-    let insetMargin = 12
+    // 勋章点击与否
+    let tapped = 0
 
+    // 最右侧 badge 具体头像 25 初始距离
     userInfo.user_flags.forEach(flag => {
       // 在头像 avatar 左侧每隔 30 距离添加一个 badge
       $('app').add({
@@ -272,11 +289,51 @@ function renderUI(userInfo) {
           make.size.equalTo($size(18, 20))
           make.top.equalTo(view.super).inset(15)
           make.left.equalTo($('nickname').right).offset(insetMargin)
+        },
+        events: {
+          tapped: function() {
+            $device.taptic(1)
+
+            // 显示勋章名称
+            $ui.animate({
+              duration: 0.4,
+              delay: 0,
+              damping: 0,
+              velocity: 0,
+              options: 0,
+              animation: function() {
+                if (tapped === 0) {
+                  $('flags-label').alpha = 1
+                  $('flags-label').text = flag.name
+                  tapped = 1
+                } else {
+                  $('flags-label').alpha = 0
+                  tapped = 0
+                }
+              }
+            })
+          }
         }
       })
 
       // 增加 30 的距离
       insetMargin = insetMargin + 30
+    })
+
+    // 显示勋章信息的 label
+    $('app').add({
+      type: 'label',
+      props: {
+        id: 'flags-label',
+        text: 'label',
+        alpha: 0,
+        font: $font(14),
+        color: $color('#777777')
+      },
+      layout: function(make, view) {
+        make.top.equalTo(view.super).inset(16)
+        make.left.equalTo($('nickname').right).offset(insetMargin)
+      }
     })
   }
 

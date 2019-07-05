@@ -2,8 +2,7 @@ var app = require('scripts/app')
 var requests = require('scripts/requests')
 
 // var sspaiUserName = 'SpencerWoo'
-var userId = '800610'
-var userInfo
+var userId = '666443'
 
 function main() {
   // 通过搜索接口获取少数派用户 ID，目前访问速度非常慢，以后再说
@@ -14,7 +13,7 @@ function main() {
 
   // 将 ID 传递给获取用户信息接口
   requests.getUserInfo(userId).then(resp => {
-    userInfo = resp.data
+    let userInfo = resp.data
     // $console.info(userInfo)
 
     app.renderUI(userInfo)
