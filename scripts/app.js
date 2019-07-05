@@ -31,15 +31,26 @@ function renderUI(userInfo) {
         }
       },
       {
-        type: 'image',
+        type: 'views',
         props: {
-          id: 'avatar',
-          src: defaultAssetPath + userInfo.avatar,
-          radius: 32
+          id: 'avatar-container'
         },
+        views: [
+          {
+            type: 'image',
+            props: {
+              id: 'avatar',
+              src: defaultAssetPath + userInfo.avatar,
+              radius: 32
+            },
+            layout: function(make) {
+              make.size.equalTo($size(64, 64))
+            }
+          }
+        ],
         layout: function(make, view) {
-          make.top.inset(18)
-          make.right.inset(16)
+          make.top.equalTo(view.super).inset(18)
+          make.right.equalTo(view.super).inset(22)
           make.size.equalTo($size(64, 64))
         }
       },
@@ -59,12 +70,12 @@ function renderUI(userInfo) {
         props: {
           id: 'nickname',
           text: userInfo.nickname,
-          font: $font('Menlo-Bold', 21),
+          font: $font('Menlo-Bold', 20),
           align: $align.left
         },
         layout: function(make, view) {
-          make.top.inset(18)
-          make.left.inset(60)
+          make.top.equalTo(view.super).inset(18)
+          make.left.equalTo(view.super).inset(60)
         }
       },
       {
@@ -85,7 +96,7 @@ function renderUI(userInfo) {
         },
         layout: function(make, view) {
           make.left.inset(25)
-          make.top.equalTo($('nickname').bottom).offset(10)
+          make.top.equalTo($('nickname').bottom).offset(8)
         }
       },
       {
@@ -243,6 +254,47 @@ function renderUI(userInfo) {
       }
     ]
   })
+
+  // 拥有勋章：
+  // 1. 签约作者、专业作者、少数派成员等等
+  if (userInfo.user_flags.length > 0) {
+    // 最右侧 badge 具体头像 25 初始距离
+    let insetMargin = 12
+
+    userInfo.user_flags.forEach(flag => {
+      // 在头像 avatar 左侧每隔 30 距离添加一个 badge
+      $('app').add({
+        type: 'image',
+        props: {
+          src: flag.icon
+        },
+        layout: function(make, view) {
+          make.size.equalTo($size(18, 20))
+          make.top.equalTo(view.super).inset(15)
+          make.left.equalTo($('nickname').right).offset(insetMargin)
+        }
+      })
+
+      // 增加 30 的距离
+      insetMargin = insetMargin + 30
+    })
+  }
+
+  // Power+ User 判定
+  if (userInfo.power_plus_flag === 1) {
+    $('avatar-container').add({
+      type: 'image',
+      props: {
+        src: 'assets/power-plus.png',
+        radius: 8
+      },
+      layout: function(make) {
+        make.size.equalTo($size(16, 16))
+        make.bottom.equalTo($('avatar-container').bottom)
+        make.right.equalTo($('avatar-container').right)
+      }
+    })
+  }
 }
 
 module.exports = {
