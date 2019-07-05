@@ -32,7 +32,7 @@
 
 顾名思义，你需要先在 iOS 上购买 JSBox。
 
-然后，用 Safari 浏览器打开：[Namecard for sspai 的安装链接](https://xteko.com/redir?url=https://github.com/spencerwooo/jsbox-sspai-namecard/blob/master/.output/Namecard%20for%20sspai.box) 来安装脚本。
+然后，用 Safari 浏览器打开：[Namecard for sspai 的安装链接](https://xteko.com/redir?name=少数派作者名片&url=https://github.com/spencerwooo/jsbox-sspai-namecard/blob/master/.output/Namecard%20for%20sspai.box?raw=true) 来安装脚本。
 
 ## 使用
 
