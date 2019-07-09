@@ -36,17 +36,19 @@
 
 顾名思义，你需要先在 iOS 上购买 JSBox。
 
-然后，用 Safari 浏览器打开：[Namecard for sspai 的安装链接](https://xteko.com/redir?name=少数派作者名片&url=https://github.com/spencerwooo/jsbox-sspai-namecard/blob/master/.output/Namecard%20for%20sspai.box?raw=true) 来安装脚本。
+然后，用 Safari 浏览器打开：[Namecard for sspai 的安装链接](https://xteko.com/redir?name=Namecard%20for%20sspai&url=https://github.com/spencerwooo/jsbox-sspai-namecard/releases/download/v0.1.0/Namecard-for-sspai.box) 来安装脚本。
 
 ## 使用
+
+> 少数派主站在更新迭代，最近 API 可能有频繁变化，请大家如果发现脚本失效或其他问题及时给我提 issue。也请大家密切关注发布页：[jsbox-sspai-namecard/releases](https://github.com/spencerwooo/jsbox-sspai-namecard/releases)，新版脚本我会及时发布在这里。
 
 查看脚本源码，找到目录下的 `main.js`，将第八行：
 
 ```javascript
-var userId = '800610'
+var userId = 'ardazhlq'
 ```
 
-后面的数字替换为你的少数派用户 ID，通常在你的少数派个人主页的链接里面就可以找到，比如 `https://beta.sspai.com/user/800610/updates` 里面的 `800610` 就是我的少数派用户 ID。
+后面的数字替换为你的少数派用户 ID，通常在你的少数派个人主页的链接里面就可以找到，比如 `https://beta.sspai.com/user/ardazhlq/posts` 里面的 `ardazhlq` 就是我的少数派用户 ID。
 
 推荐将脚本设置为通知中心小组件，以 Today Widget（小组件）的形式使用。
 
