@@ -6,13 +6,13 @@
 
 > 少数派作者名片 | 一个 JSBox 小组件
 
+**推荐阅读：**[新版少数派网站的作者成就墙好好看啊，于是我用它写了一个 JSBox 小插件](https://beta.sspai.com/post/55562)
+
 ## Screenshots
 
 ### Interface 界面
 
-|     小组件折叠时      |     小组件展开时      |
-| :-------------------: | :-------------------: |
-| ![](assets/demo1.JPG) | ![](assets/demo2.JPG) |
+![](https://i.loli.net/2019/07/09/5d23e6a1e772a64161.jpg)
 
 按照新版少数派 API，显示了少数派作者：
 
@@ -22,10 +22,14 @@
 - 用户简介
 - 以及获得成就
 
+### Badges 勋章墙
+
+![](https://i.loli.net/2019/07/09/5d23e6d765fe096224.png)
+
 ### Animations 动画
 
 <div align="center">
-<img src="https://i.loli.net/2019/07/05/5d1f54fe6a53780193.gif" width="340" alt="demo gif"/>
+<img src="https://i.loli.net/2019/07/09/5d23e6f3e98cd77813.gif" width="400" alt="demo gif"/>
 </div>
 
 ## 安装
