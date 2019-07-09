@@ -2,12 +2,11 @@
  * 处理 API 请求
  */
 
-var sspaiApiUrl = 'https://beta.sspai.com/api/v1/user/id/info/get?id='
-// var sspaiUserId = '800610'
+// 少数派用户信息接口更新频繁，可能会有查询问题，请注意及时更新脚本
+var sspaiApiUrl = 'https://beta.sspai.com/api/v1/user/slug/info/get?slug='
 
 var sspaiSearchApi =
   'https://beta.sspai.com/api/v1/user/search/page/get?limit=1&nickname='
-// var sspaiSearchName = 'SpencerWoo'
 
 async function getUserId(sspaiSearchName) {
   let resp = await $http.get({
