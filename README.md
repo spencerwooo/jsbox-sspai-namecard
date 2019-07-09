@@ -48,7 +48,7 @@
 var userId = 'ardazhlq'
 ```
 
-后面的数字替换为你的少数派用户 ID，通常在你的少数派个人主页的链接里面就可以找到，比如 `https://beta.sspai.com/user/ardazhlq/posts` 里面的 `ardazhlq` 就是我的少数派用户 ID。
+后面的数字替换为你的少数派用户 ID，通常在你的少数派个人主页的链接里面就可以找到，比如 `https://beta.sspai.com/u/ardazhlq/updates` 里面的 `ardazhlq` 就是我的少数派用户 ID。
 
 推荐将脚本设置为通知中心小组件，以 Today Widget（小组件）的形式使用。
 
