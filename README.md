@@ -29,7 +29,7 @@
 ### Animations 动画
 
 <div align="center">
-<img src="https://i.loli.net/2019/07/09/5d23e6f3e98cd77813.gif" width="400" alt="demo gif"/>
+<img src="https://i.loli.net/2019/07/09/5d23e6f3e98cd77813.gif" width="600" alt="demo gif"/>
 </div>
 
 ## 安装
@@ -58,7 +58,7 @@ var userId = '800610'
 
 ---
 
-💡 **Namecard for sspai** ©Spencer Woo. Released under the MIT License.
+📟 **Namecard for sspai** ©Spencer Woo. Released under the MIT License.
 
 Authored and maintained by Spencer Woo.
 
