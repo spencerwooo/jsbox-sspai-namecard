@@ -130,6 +130,7 @@ function renderUI(userInfo) {
           id: 'nickname',
           text: userInfo.nickname,
           font: $font('Menlo-Bold', 20),
+          color: $color('#24292E'),
           align: $align.left
         },
         layout: function(make, view) {
@@ -164,6 +165,7 @@ function renderUI(userInfo) {
           id: 'bio',
           text: userInfo.bio.split('\n').join(' '),
           font: $font(12),
+          color: $color('#24292E'),
           align: $align.left
         },
         layout: function(make, view) {
